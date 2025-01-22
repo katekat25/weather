@@ -3,6 +3,9 @@ async function getWeather(city, unitGroup) {
         mode: "cors"
     });
     if (!response.ok) {
+        if (response.status === 400) {
+            throw new Error("Bad Request: Please enter a valid city name.");
+        }
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
     let data = await response.json();
@@ -10,4 +13,14 @@ async function getWeather(city, unitGroup) {
     console.log("Current weather: " + data.currentConditions.conditions);
 }
 
-getWeather("manila", "us");
+let form = document.getElementById("form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    const city = formData.get("city");
+    const unitGroup = formData.get("unitGroup");
+
+    getWeather(city, unitGroup);
+});
