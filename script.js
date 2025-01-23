@@ -14,14 +14,24 @@ async function getWeather(city, unitGroup) {
 
     console.log(data);
     let currentWeather = data.currentConditions.conditions;
+    let unit;
+    if (unitGroup === "us") {
+        unit = "F";
+    } else if (unitGroup === "metric" || unitGroup === "uk") {
+        unit = "C";
+    }
     console.log("Current weather: " + currentWeather);
+    console.log("Temperature: " + data.currentConditions.temp + " °" + unit);
+    console.log("Feels like: " + data.currentConditions.feelslike + " °" + unit);
+    console.log(data.currentConditions.humidity + ("% humidity"));
+    console.log("Chance of rain: " + data.currentConditions.precipprob + "%");
     getGif(currentWeather);
 }
 
 async function getGif(term) {
     const gifSlot = document.querySelector("img");
 
-    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=wBRqeRe5x8K9uskZi2lOIXAMt5clY4Sf&s=${term ? term + " weather" : "weather"}`, {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=wBRqeRe5x8K9uskZi2lOIXAMt5clY4Sf&s=${term ? term + " weather" : "ghibli"}`, {
         mode: "cors"
     });
     console.log(term + " weather");
@@ -46,3 +56,5 @@ form.addEventListener("submit", (event) => {
 
     getWeather(city, unitGroup);
 });
+
+getGif();

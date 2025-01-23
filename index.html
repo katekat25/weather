@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
+    <title>Yoho ☂️</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
-    <h1>Hi!</h1>
-    <form id="form">
-        <img>
-        <label for="city">City: </label>
-        <input type="text" id="city" name="city" value="Chicago">
-        <select name="unitGroup" id="unitGroup">
-            <option value="us">US</option>
-            <option value="metric">Metric</option>
-            <option value="uk">UK</option>
-        </select>
-        <input type="submit" value="Search">
-    </form>
+    <h1>Yoho ☂️</h1>
+    <div class="container">
+        <img class="gif">
+        <form id="form">
+            <label for="city">City: </label>
+            <input type="text" id="city" name="city" value="Chicago">
+            <label for="unitGroup">Units:</label>
+            <select name="unitGroup" id="unitGroup">
+                <option value="us">US</option>
+                <option value="metric">Metric</option>
+                <option value="uk">UK</option>
+            </select>
+            <input type="submit" value="Search">
+        </form>
+        <div class="info"></div>
+    </div>
 </body>
+
 </html>
